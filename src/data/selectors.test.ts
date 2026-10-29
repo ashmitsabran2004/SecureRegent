@@ -1,0 +1,2 @@
+import { describe,it,expect } from 'vitest'; import { periodDates,previousPeriod } from './model';
+describe('date ranges',()=>{it('creates equal length previous period',()=>{const d=periodDates('Last 7 Days');const p=previousPeriod(d.start,d.end);expect(p.days).toBe(7);expect((d.start.getTime()-p.start.getTime())/86400000).toBe(7);});it('supports custom dates',()=>{const d=periodDates('Custom','2025-03-01','2025-03-05');expect(d.start.getDate()).toBe(1);expect(d.end.getDate()).toBe(5);});});
